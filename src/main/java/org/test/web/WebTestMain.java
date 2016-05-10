@@ -9,4 +9,5 @@ public class WebTestMain {
 	public static void main(String[] args) {
 		SpringApplication.run(WebTestMain.class, args);
 	}
+
 }
