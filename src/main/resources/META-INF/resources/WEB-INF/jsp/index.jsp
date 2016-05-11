@@ -15,83 +15,106 @@
 
 	<div class="row mt">
 		<div class="col-md-4">
-			<div class="panel panel-primary">
-				<div class="panel-heading">Having fun!</div>
-				<form id="calForm" action="calculate" class="panel-body"
-					method="post">
-					<div class="row top5">
-						<div class="col-md-12">
-							<div class="input-group">
-								<span class="input-group-addon" id="basic-addon1">num1</span> <input
-									type="text" class="form-control" placeholder="num1"
-									aria-describedby="basic-addon1" name="num1">
-							</div>
-						</div>
-					</div>
-					<div class="row top5">
-						<div class="col-md-12">
-							<div class="input-group">
-								<span class="input-group-addon" id="basic-addon1">num2</span> <input
-									type="text" class="form-control" placeholder="num2"
-									aria-describedby="basic-addon1" name="num2">
-							</div>
-						</div>
-					</div>
 
-					<div class="row top5">
-						<div class="col-md-12">
-							<div class="input-group">
-								<span class="input-group-addon" id="basic-addon1">result</span>
-								<input type="text" class="form-control" placeholder="result"
-									aria-describedby="basic-addon1" name="result" value="${result}">
-							</div>
-						</div>
-					</div>
-
-					<input class="span2" id="opt" name="opt" type="hidden">
-					<div class="row top5">
-						<div class="col-md-12">
-							<div class="btn-group btn-block">
-								<button type="button"
-									class="btn btn-primary dropdown-toggle col-md-12"
-									data-toggle="dropdown" aria-haspopup="true"
-									aria-expanded="true">
-									calculate <span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu">
-									<li onclick="$('#opt').val('1'); $('#calForm').submit()"><a
-										href="#">plus</a></li>
-									<li onclick="$('#opt').val('2'); $('#calForm').submit()"><a
-										href="#">subtract</a></li>
-									<li onclick="$('#opt').val('3'); $('#calForm').submit()"><a
-										href="#">multiple</a></li>
-									<li onclick="$('#opt').val('4'); $('#calForm').submit()"><a
-										href="#">divide</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-
-					<c:if test="${ok == false}">
+			<div class="row">
+				<div class="panel panel-primary">
+					<div class="panel-heading">Having fun!</div>
+					<form id="calForm" action="calculate" class="panel-body"
+						method="post">
 						<div class="row top5">
 							<div class="col-md-12">
-								<div class="alert alert-warning alert-dismissible" role="alert">
-									<button type="button" class="close" data-dismiss="alert"
-										aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-									</button>
-									<strong>Warning!</strong> "${errMsg}"
+								<div class="input-group">
+									<span class="input-group-addon" id="basic-addon1">num1</span> <input
+										type="text" class="form-control" placeholder="num1"
+										aria-describedby="basic-addon1" name="num1">
 								</div>
 							</div>
 						</div>
-					</c:if>
+						<div class="row top5">
+							<div class="col-md-12">
+								<div class="input-group">
+									<span class="input-group-addon" id="basic-addon1">num2</span> <input
+										type="text" class="form-control" placeholder="num2"
+										aria-describedby="basic-addon1" name="num2">
+								</div>
+							</div>
+						</div>
+
+						<div class="row top5">
+							<div class="col-md-12">
+								<div class="input-group">
+									<span class="input-group-addon" id="basic-addon1">result</span>
+									<input type="text" class="form-control" placeholder="result"
+										aria-describedby="basic-addon1" name="result"
+										value="${result}">
+								</div>
+							</div>
+						</div>
+
+						<input class="span2" id="opt" name="opt" type="hidden">
+						<div class="row top5">
+							<div class="col-md-12">
+								<div class="btn-group btn-block">
+									<button type="button"
+										class="btn btn-primary dropdown-toggle col-md-12"
+										data-toggle="dropdown" aria-haspopup="true"
+										aria-expanded="true">
+										calculate <span class="caret"></span>
+									</button>
+									<ul class="dropdown-menu">
+										<li onclick="$('#opt').val('1'); $('#calForm').submit()"><a
+											href="#">plus</a></li>
+										<li onclick="$('#opt').val('2'); $('#calForm').submit()"><a
+											href="#">subtract</a></li>
+										<li onclick="$('#opt').val('3'); $('#calForm').submit()"><a
+											href="#">multiple</a></li>
+										<li onclick="$('#opt').val('4'); $('#calForm').submit()"><a
+											href="#">divide</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+
+						<c:if test="${ok == false}">
+							<div class="row top5">
+								<div class="col-md-12">
+									<div class="alert alert-warning alert-dismissible" role="alert">
+										<button type="button" class="close" data-dismiss="alert"
+											aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+										<strong>Warning!</strong> "${errMsg}"
+									</div>
+								</div>
+							</div>
+						</c:if>
+					</form>
+				</div>
+			</div>
+			<div class="row">
+				<form id="uploadForm" method="POST" enctype="multipart/form-data"
+					action="upload">
+					<label class="btn btn-primary" for="file"> <input id="file"
+						name="file" type="file" style="display: none;"
+						onchange="upload(this)" accept=".xlsx"> upload excel
+					</label> <span class='label lb-md label-info' id="name"></span>
 				</form>
 			</div>
+			<div class="row top5">
+				<div class="progress">
+					<div class="progress-bar" role="progressbar" aria-valuenow="60"
+						aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+					</div>
+				</div>
+			</div>
+
 		</div>
 
 		<div class="col-md-8">
 			<div class=" panel panel-primary">
-				<div class="panel-heading">Calculate details<span class="badge pull-right">${detailCount}</span></div>
+				<div class="panel-heading">
+					Calculate details<span class="badge pull-right">${detailCount}</span>
+				</div>
 				<div class="panel-body">
 					<table class="table">
 						<thead>
@@ -134,7 +157,7 @@
 
 					<form id="topage" action="topage" method="post">
 
-						<input id="page" name="page" type="hidden" value="${currentPage}"/>
+						<input id="page" name="page" type="hidden" value="${currentPage}" />
 						<div class="col-md-6 col-md-offset-3">
 							<nav>
 								<ul class="pagination">
@@ -147,9 +170,10 @@
 											</a></li>
 										</c:when>
 										<c:otherwise>
-											<li class="page-item" onclick="$('#page').val(parseInt($('#page').val()) - 1);$('#topage').submit()"><a class="page-link" href="#"
-												aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-													<span class="sr-only">Previous</span>
+											<li class="page-item"
+												onclick="$('#page').val(parseInt($('#page').val()) - 1);$('#topage').submit()"><a
+												class="page-link" href="#" aria-label="Previous"> <span
+													aria-hidden="true">&laquo;</span> <span class="sr-only">Previous</span>
 											</a></li>
 										</c:otherwise>
 									</c:choose>
@@ -162,7 +186,9 @@
 													href="#">${page}</a></li>
 											</c:when>
 											<c:otherwise>
-												<li class="page-item" onclick="$('#page').val(${page});$('#topage').submit()"><a class="page-link" href="#">${page}</a></li>
+												<li class="page-item"
+													onclick="$('#page').val(${page});$('#topage').submit()"><a
+													class="page-link" href="#">${page}</a></li>
 											</c:otherwise>
 										</c:choose>
 									</c:forEach>
@@ -175,9 +201,10 @@
 											</a></li>
 										</c:when>
 										<c:otherwise>
-											<li class="page-item" onclick="$('#page').val(parseInt($('#page').val()) + 1);$('#topage').submit()"><a class="page-link" href="#"
-												aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-													<span class="sr-only">Next</span>
+											<li class="page-item"
+												onclick="$('#page').val(parseInt($('#page').val()) + 1);$('#topage').submit()"><a
+												class="page-link" href="#" aria-label="Next"> <span
+													aria-hidden="true">&raquo;</span> <span class="sr-only">Next</span>
 											</a></li>
 										</c:otherwise>
 									</c:choose>
@@ -190,6 +217,7 @@
 			</div>
 		</div>
 	</div>
+	<script src="js/my.js"></script>
 	<script src="js/jquery-1.12.3.js"></script>
 	<script src="js/bootstrap.js"></script>
 </body>
