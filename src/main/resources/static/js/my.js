@@ -1,7 +1,9 @@
-function upload(fileInput) {
-	var file = fileInput.files[0];
+function upload() {
+	$(".progress").removeClass("hidden");
+	var files = $("#file")[0].files;
 	var formData = new FormData();
-	formData.append("file" , file);
+	formData.append("files[0]" , files[0]);
+	formData.append("files[1]" , files[1]);
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", "upload", true);
 	xhr.upload.addEventListener("progress",progressHandle, false);

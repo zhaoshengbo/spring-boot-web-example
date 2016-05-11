@@ -10,15 +10,17 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.test.web.entity.MultiPartFileUploadBean;
 
 @Controller
 public class UploadController {
 
 	@RequestMapping("upload")
-	public ModelAndView upload(MultipartFile file) throws IOException {
-		File serverFile = this.createFile(file.getOriginalFilename());
-		this.writeFileContent(serverFile, file);
-
+	public ModelAndView upload(MultiPartFileUploadBean files) throws IOException {
+		for (MultipartFile file : files.getFiles()) {
+			File serverFile = this.createFile(file.getOriginalFilename());
+			this.writeFileContent(serverFile, file);
+		}
 		ModelAndView mv = new ModelAndView("index");
 		mv.addObject("ok", "true");
 

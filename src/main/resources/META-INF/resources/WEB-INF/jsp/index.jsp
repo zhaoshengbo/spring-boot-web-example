@@ -92,20 +92,25 @@
 				</div>
 			</div>
 			<div class="row">
-				<form id="uploadForm" method="POST" enctype="multipart/form-data"
-					action="upload">
-					<label class="btn btn-primary" for="file"> <input id="file"
-						name="file" type="file" style="display: none;"
-						onchange="upload(this)" accept=".xlsx"> upload excel
-					</label> <span class='label lb-md label-info' id="name"></span>
-				</form>
-			</div>
-			<div class="row top5">
-				<div class="progress">
-					<div class="progress-bar" role="progressbar" aria-valuenow="60"
-						aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+				<div class="panel panel-primary">
+					<div class="panel-heading">uploading fun</div>
+					<div class="panel-body">
+						<label class="btn btn-primary" for="file"> <input
+							id="file" name="file" type="file" style="display: none;"
+							accept=".xlsx" multiple> upload excel
+						</label> <span class='label lb-md label-info' id="name"></span> 
+						
+						<label class="btn btn-primary" onclick="upload()">upload</label>
+
+						<div class="top5">
+							<div class="progress hidden">
+								<div class="progress-bar" role="progressbar" aria-valuenow="60"
+									aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>
+							</div>
+						</div>
 					</div>
 				</div>
+
 			</div>
 
 		</div>
